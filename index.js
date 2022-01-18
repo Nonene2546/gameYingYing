@@ -13,7 +13,8 @@ class Player {
 
   draw() {
     c.beginPath();
-    c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+    // c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+    c.rect(0, canvas.height-100, canvas.width, 100);
     c.fillStyle = this.color;
     c.fill();
   }
@@ -93,8 +94,8 @@ class Projectile {
 addEventListener("click", (event) => {
   const angle = Math.atan2(event.clientY - player.y, event.clientX - player.x);
   const velocity = {
-    x: Math.cos(angle) * 2.2,
-    y: Math.sin(angle) * 2.2,
+    x: Math.cos(angle) * 4,
+    y: Math.sin(angle) * 4,
   };
   const projectile = new Projectile(player.x, player.y, 5, "red", velocity);
   projectiles.push(projectile);
@@ -125,7 +126,7 @@ function spawnEnemies() {
       y: velocityY,
     };
     enemies.push(new Enemy(x, y, radius, color, velocity, 0.005));
-  }, 1000);
+  }, 1500);
 }
 
 let animation
@@ -199,11 +200,8 @@ function animate() {
     });
     const obj1 = enemy
     const obj2 = player
-    const dist = Math.sqrt(
-    (obj2.x - obj1.x) * (obj2.x - obj1.x) +
-        (obj2.y - obj1.y) * (obj2.y - obj1.y)
-    );
-    if(dist - obj1.radius - obj2.radius < 1){
+    
+    if(canvas.height - obj1.y - obj1.radius - 100 < 1){
         cancelAnimationFrame(animation)
         document.getElementById('result').innerHTML = score
         document.getElementById('container').style.display = 'flex'
