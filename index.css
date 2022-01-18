@@ -1,0 +1,37 @@
+body{
+    margin: 0;
+}
+.score{
+    top: 0;
+    left: 0;
+    position: fixed;
+    color: white;
+    font-size: 2rem;
+    user-select: none;
+}
+
+.container{
+    /* position: fixed; */
+    position: absolute;
+    margin-left: 25%;
+    margin-top: 50%;
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    inset: 0;
+    width: 50%;
+    height: 250px;
+}
+
+.result{
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+button{
+    font-size: 1.5rem;
+    border: none;
+    background-color: white;
+}
