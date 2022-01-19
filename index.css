@@ -1,6 +1,7 @@
 body{
     margin: 0;
 }
+
 .score{
     top: 0;
     left: 0;
@@ -11,28 +12,37 @@ body{
 }
 
 .container{
-    /* position: fixed; */
     position: absolute;
-    margin-left: 25%;
-    margin-top: 50%;
+    left: 50%;
+    top: 50%;
+    background-color: white;
     display: none;
     flex-direction: column;
-    background-color: white;
-    justify-content: center;
-    align-items: center;
-    inset: 0;
-    width: 50%;
+    width: 250px;
     height: 250px;
-    transform: translate(0%,-50%);
+    transform: translate(-50%, -50%); 
+    align-items: center;
 }
 
 .result{
-    font-size: 2rem;
-    margin-bottom: 0;
+    font-size: 4rem;
+    margin-top: 50px;
+}
+
+#best-score{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 button{
-    font-size: 1.5rem;
+    font-size: 2rem;
     border: none;
     background-color: white;
+}
+
+@media (max-width: 425px) {
+    canvas{
+        max-width: 425px;
+    }
 }

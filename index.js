@@ -1,7 +1,25 @@
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
-canvas.width = innerWidth - 10;
-canvas.height = innerHeight - 10;
+canvas.height = innerHeight;
+//set canvas max-width to 425px
+if(innerWidth>425){
+  canvas.width = 425;
+}
+else{
+  canvas.width = innerWidth;
+}
+
+//loading best score
+let bestScore = localStorage.getItem('bestScore')
+window.addEventListener('DOMContentLoaded', () => {
+  if(bestScore){
+    document.getElementById('best-score').innerHTML = "Best: " + bestScore.toString()
+  }
+  else{
+    localStorage.setItem('bestScore', 0)
+  }
+});
+
 
 class Player {
   constructor(x, y, radius, color) {
@@ -20,6 +38,7 @@ class Player {
   }
 }
 
+//all sprite data
 let enemies = [];
 let projectiles = [];
 let score = 0
@@ -91,8 +110,9 @@ class Projectile {
   }
 }
 
+//angle calculation
 addEventListener("click", (event) => {
-  const angle = Math.atan2(event.clientY - player.y, event.clientX - player.x);
+  const angle = Math.atan2(event.clientY - player.y, event.clientX - player.x - innerWidth/2 + 212.5);
   const velocity = {
     x: Math.cos(angle) * 4,
     y: Math.sin(angle) * 4,
@@ -199,10 +219,14 @@ function animate() {
       }
     });
     const obj1 = enemy
-    const obj2 = player
     
     if(canvas.height - obj1.y - obj1.radius - 100 < 1){
         cancelAnimationFrame(animation)
+        if(score>bestScore){
+          document.getElementById('best-score').innerHTML = "Best: " + score
+          localStorage.setItem('bestScore', score)
+          bestScore = score
+        }
         document.getElementById('result').innerHTML = score
         document.getElementById('container').style.display = 'flex'
     }
