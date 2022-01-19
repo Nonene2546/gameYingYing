@@ -12,6 +12,7 @@ else{
 //loading best score
 let bestScore = localStorage.getItem('bestScore')
 window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('score-container').style.left = (innerWidth/2-canvas.width/2 + 4).toString() + "px"
   if(bestScore){
     document.getElementById('best-score').innerHTML = "Best: " + bestScore.toString()
   }

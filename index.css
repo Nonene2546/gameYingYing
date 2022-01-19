@@ -2,9 +2,9 @@ body{
     margin: 0;
 }
 
-.score{
+.score-container{
+    display: flex;
     top: 0;
-    left: 0;
     position: fixed;
     color: white;
     font-size: 2rem;
